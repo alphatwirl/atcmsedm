@@ -11,6 +11,8 @@ except ImportError:
 from .EventBuilderConfig import EventBuilderConfig
 from .load_fwlite import load_fwlite
 
+from .cmsfilepath import convert_lfn_to_pfn_or_aaa
+
 ##__________________________________________________________________||
 class EventBuilderConfigMaker(object):
     def __init__(self):
@@ -44,6 +46,7 @@ class EventBuilderConfigMaker(object):
 
     def nevents_in_file(self, path):
         load_fwlite()
+        path = convert_lfn_to_pfn_or_aaa(path)
         edm_event = EDMEvents([path])
         return edm_event.size()
 

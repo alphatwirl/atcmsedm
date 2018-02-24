@@ -1,6 +1,8 @@
 # Tai Sakuma <tai.sakuma@gmail.com>
 from .CMSEDMEvents import CMSEDMEvents
 
+from .cmsfilepath import convert_lfn_to_pfn_or_aaa
+
 ##__________________________________________________________________||
 class CMSEDMEventBuilder(object):
     def __init__(self, config):
@@ -13,8 +15,9 @@ class CMSEDMEventBuilder(object):
         )
 
     def __call__(self):
+        paths = [convert_lfn_to_pfn_or_aaa(p) for p in self.config.inputPaths]
         events = CMSEDMEvents(
-            paths = self.config.inputPaths,
+            paths = paths,
             maxEvents = self.config.maxEvents,
             start = self.config.start
         )
