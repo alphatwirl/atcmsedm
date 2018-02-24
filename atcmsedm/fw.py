@@ -13,7 +13,6 @@ except:
 import alphatwirl
 
 from .yes_no import query_yes_no
-from . import delphes
 
 ##__________________________________________________________________||
 import logging
