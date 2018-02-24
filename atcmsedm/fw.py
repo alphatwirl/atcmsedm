@@ -13,6 +13,7 @@ except:
 import alphatwirl
 
 from .yes_no import query_yes_no
+from . import cmsedm
 
 ##__________________________________________________________________||
 import logging
@@ -92,9 +93,9 @@ class AtCMSEDM(object):
             reader_top.add(r)
             collector_top.add(c)
         eventLoopRunner = alphatwirl.loop.MPEventLoopRunner(self.parallel.communicationChannel)
-        eventBuilderConfigMaker = alphatwirl.cmsedm.EventBuilderConfigMaker()
+        eventBuilderConfigMaker = cmsedm.EventBuilderConfigMaker()
         datasetIntoEventBuildersSplitter = alphatwirl.loop.DatasetIntoEventBuildersSplitter(
-            EventBuilder=alphatwirl.cmsedm.CMSEDMEventBuilder,
+            EventBuilder=cmsedm.CMSEDMEventBuilder,
             eventBuilderConfigMaker=eventBuilderConfigMaker,
             maxEvents=self.max_events_per_dataset,
             maxEventsPerRun=self.max_events_per_process,
