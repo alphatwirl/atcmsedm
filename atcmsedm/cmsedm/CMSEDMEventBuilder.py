@@ -15,6 +15,7 @@ class CMSEDMEventBuilder(object):
         )
 
     def __call__(self):
+        paths = self.config.inputPaths
         paths = [convert_lfn_to_pfn_or_aaa(p) for p in self.config.inputPaths]
         events = CMSEDMEvents(
             paths = paths,
